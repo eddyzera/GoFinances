@@ -11,5 +11,5 @@ export const ViewContainer = styled.View`
 export const TitleText = styled.Text`
   font-size: 24px;
   font-weight: bold;
-  color: purple;
+  color: ${({ theme }) => theme.colors.title};
 `
