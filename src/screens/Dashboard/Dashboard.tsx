@@ -1,10 +1,10 @@
 import React from 'react'
-import { View, Text } from 'react-native'
+import { ViewContainer, TitleText } from './styles'
 
 export const Dashboard: React.FunctionComponent = () => {
   return (
-    <View>
-      <Text>Hello this is my dashboard</Text>
-    </View>
+    <ViewContainer>
+      <TitleText>Dashboard</TitleText>
+    </ViewContainer>
   )
 }
