@@ -4,6 +4,8 @@ export const ViewContainer = styled.View`
   flex: 1;
   justify-content: center;
   align-items: center;
+
+  background-color: ${({ theme }) => theme.colors.backgroundColor};
 `
 
 export const TitleText = styled.Text`
