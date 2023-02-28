@@ -38,7 +38,7 @@ export default function App() {
   if (!isLoaded) return null;
   return (
     <ThemeProvider theme={customTheme}>
-      <Dashboard />
+       <Dashboard />
     </ThemeProvider>
   )
 }
