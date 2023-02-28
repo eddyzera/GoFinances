@@ -8,6 +8,7 @@ import {
   UserWrapper,
   UserInfo,
   UserName,
+  Icon
 } from './styles'
 
 export const Dashboard: React.FunctionComponent = () => {
@@ -24,6 +25,7 @@ export const Dashboard: React.FunctionComponent = () => {
               <UserName>Edgar Silva</UserName>
             </User>
           </UserInfo>
+          <Icon name="power" />
         </UserWrapper>
       </HeaderView>
     </ContainerView>
