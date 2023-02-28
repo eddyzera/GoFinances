@@ -1,4 +1,5 @@
 import React from 'react'
+import { HighlightCard } from '../../components'
 import {
   ContainerView,
   HeaderView,
@@ -28,6 +29,7 @@ export const Dashboard: React.FunctionComponent = () => {
           <Icon name="power" />
         </UserWrapper>
       </HeaderView>
+      <HighlightCard />
     </ContainerView>
   )
 }
