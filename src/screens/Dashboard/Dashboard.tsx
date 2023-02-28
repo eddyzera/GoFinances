@@ -9,7 +9,8 @@ import {
   UserWrapper,
   UserInfo,
   UserName,
-  Icon
+  Icon,
+  DashboardHightlightCards
 } from './styles'
 
 export const Dashboard: React.FunctionComponent = () => {
@@ -29,7 +30,11 @@ export const Dashboard: React.FunctionComponent = () => {
           <Icon name="power" />
         </UserWrapper>
       </HeaderView>
-      <HighlightCard />
+      <DashboardHightlightCards>
+        <HighlightCard />
+        <HighlightCard />
+        <HighlightCard />
+      </DashboardHightlightCards>
     </ContainerView>
   )
 }
