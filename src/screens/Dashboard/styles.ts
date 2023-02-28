@@ -14,7 +14,10 @@ export const HeaderView = styled.View`
   flex-direction: row;
 `
 
-export const UserWrapper = styled.View``
+export const UserWrapper = styled.View`
+  width: 100%;
+  padding: 0 24px;
+`
 
 export const UserInfo = styled.View`
   flex-direction: row;
