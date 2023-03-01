@@ -1,5 +1,5 @@
 import React from 'react'
-import { HighlightCard } from '../../components'
+import { HighlightCard, TransactionCard } from '../../components'
 import {
   ContainerView,
   HeaderView,
@@ -10,7 +10,9 @@ import {
   UserInfo,
   UserName,
   Icon,
-  DashboardHightlightCards
+  DashboardHightlightCards,
+  DashboardTransactions,
+  DashboardTransactionsTitle
 } from './styles'
 
 export const Dashboard: React.FunctionComponent = () => {
@@ -50,6 +52,10 @@ export const Dashboard: React.FunctionComponent = () => {
           lastTransaction="01 à 16 de abril"
         />
       </DashboardHightlightCards>
+      <DashboardTransactions>
+        <DashboardTransactionsTitle>Listagem</DashboardTransactionsTitle>
+        <TransactionCard />
+      </DashboardTransactions>
     </ContainerView>
   )
 }
