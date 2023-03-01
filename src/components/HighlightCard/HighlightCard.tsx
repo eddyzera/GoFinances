@@ -9,16 +9,33 @@ import {
   CardTitleText
 } from './styles'
 
-export const HighlightCard: React.FunctionComponent = () => {
+interface HighlightCardProps {
+  title: string
+  amount: string
+  lastTransaction: string
+  type: 'up' | 'down' | 'total'
+}
+
+export const HighlightCard: React.FunctionComponent<HighlightCardProps> = ({
+  title,
+  amount,
+  lastTransaction,
+  type
+}) => {
+  const icon = {
+    up: 'arrow-up-circle',
+    down: 'arrow-down-circle',
+    total: 'dollar-sign'
+  }
   return (
-    <CardContainerView>
+    <CardContainerView type={type}>
       <CardHeaderView>
-        <CardTitleText>Entradas</CardTitleText>
-        <CardIcon name="arrow-up-circle" />
+        <CardTitleText type={type}>{title}</CardTitleText>
+        <CardIcon name={icon[type]} type={type} />
       </CardHeaderView>
       <CardFooterView>
-        <CardAmountText>R$ 17.400,00</CardAmountText>
-        <CardLastTransaction>Última entrada dia 13 de abril</CardLastTransaction>
+        <CardAmountText type={type}>{amount}</CardAmountText>
+        <CardLastTransaction type={type}>{lastTransaction}</CardLastTransaction>
       </CardFooterView>
     </CardContainerView>
   )

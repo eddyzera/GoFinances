@@ -19,7 +19,7 @@ export const HeaderView = styled.View`
 export const UserWrapper = styled.View`
   width: 100%;
   margin-top:${getStatusBarHeight() + RFValue(28)}px;
-  padding: ${RFValue(0)}px ${RFValue(24)}px;
+  padding: 0 24px;
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
