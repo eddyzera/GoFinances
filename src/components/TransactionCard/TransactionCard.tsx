@@ -7,20 +7,38 @@ import {
   TransactionCardFooterView,
   TransactionCardCategoryView,
   TransactionCardIcon,
-  TransactionCardCategoryNameText
+  TransactionCardCategoryNameText,
+  TransactionCardDateText
 } from './styles'
 
-export const TransactionCard: React.FunctionComponent = () => {
+type CategoryProps = {
+  name: string
+  icon: string
+}
+
+interface TransactionCardProps {
+  title: string
+  amount: string
+  category: CategoryProps
+  date: string
+}
+
+export const TransactionCard: React.FunctionComponent<TransactionCardProps> = ({
+  title,
+  amount,
+  category,
+  date
+}) => {
   return (
     <TransactionCardContainerView>
-      <TransactionCardTitleText>Desenvolvimento de site</TransactionCardTitleText>
-      <TransactionCardAmountTitleText>R$ 12.000,00</TransactionCardAmountTitleText>
+      <TransactionCardTitleText>{title}e</TransactionCardTitleText>
+      <TransactionCardAmountTitleText>{amount}</TransactionCardAmountTitleText>
       <TransactionCardFooterView>
         <TransactionCardCategoryView>
           <TransactionCardIcon name="dollar-sign" />
-          <TransactionCardCategoryNameText>Vendas</TransactionCardCategoryNameText>
+          <TransactionCardCategoryNameText>{category.name}</TransactionCardCategoryNameText>
         </TransactionCardCategoryView>
-        
+        <TransactionCardDateText>{date}</TransactionCardDateText>
       </TransactionCardFooterView>
     </TransactionCardContainerView>
   )
