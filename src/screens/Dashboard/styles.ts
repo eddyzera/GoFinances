@@ -77,3 +77,6 @@ export const DashboardTransactionsTitle = styled.Text`
   font-family: ${({ theme }) => theme.fonts.regular };
   margin-bottom: 16px;
 `
+export const DashboardTransactionsListFlatList = styled.FlatList`
+  
+`

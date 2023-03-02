@@ -12,10 +12,26 @@ import {
   Icon,
   DashboardHightlightCards,
   DashboardTransactions,
-  DashboardTransactionsTitle
+  DashboardTransactionsTitle,
+  DashboardTransactionsListFlatList
 } from './styles'
+import { getBottomSpace } from 'react-native-iphone-x-helper'
 
 export const Dashboard: React.FunctionComponent = () => {
+  const data = [
+    {
+      title: 'Desenvolvimento de site',
+      amount: 'R$ 12.000,00',
+      category: { name: 'Vendas', icon: 'dollar-sign' },
+      date: '13/04/2020'
+    },
+    {
+      title: 'Hamburgueria Pizzy',
+      amount: '- R$ 59,00',
+      category: { name: 'Alimentação', icon: 'dollar-sign' },
+      date: '10/04/2020'
+    }
+  ]
   return (
     <ContainerView>
       <HeaderView>
@@ -54,12 +70,12 @@ export const Dashboard: React.FunctionComponent = () => {
       </DashboardHightlightCards>
       <DashboardTransactions>
         <DashboardTransactionsTitle>Listagem</DashboardTransactionsTitle>
-        <TransactionCard
-          data={{
-            title: 'Desenvolvimento de site',
-            amount: 'R$ 12.000,00',
-            category: { name: 'Vendas', icon: 'dollar-sign' },
-            date: '13/04/2020'
+        <DashboardTransactionsListFlatList 
+          data={data}
+          renderItem={({ item }) => <TransactionCard data={item} />}
+          showsVerticalScrollIndicator={false}
+          contentContainerStyle={{
+            paddingBottom: getBottomSpace()
           }}
         />
       </DashboardTransactions>
