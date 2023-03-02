@@ -7,7 +7,7 @@ import {
 } from '@expo-google-fonts/poppins'
 import * as SplashScreen from 'expo-splash-screen'
 import { ThemeProvider } from 'styled-components'
-import { Dashboard } from './src/screens'
+import { Dashboard, Register } from './src/screens'
 import { customTheme } from './src/global'
 
 export default function App() {
@@ -38,7 +38,7 @@ export default function App() {
   if (!isLoaded) return null;
   return (
     <ThemeProvider theme={customTheme}>
-       <Dashboard />
+       <Register />
     </ThemeProvider>
   )
 }
