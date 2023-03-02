@@ -1,5 +1,4 @@
 import React from 'react'
-import { Text } from 'react-native'
 import {
   TransactionCardContainerView,
   TransactionCardTitleText,
@@ -17,28 +16,27 @@ type CategoryProps = {
 }
 
 interface TransactionCardProps {
-  title: string
-  amount: string
-  category: CategoryProps
-  date: string
+  data: {
+    title: string
+    amount: string
+    category: CategoryProps
+    date: string
+  }
 }
 
 export const TransactionCard: React.FunctionComponent<TransactionCardProps> = ({
-  title,
-  amount,
-  category,
-  date
+  data
 }) => {
   return (
     <TransactionCardContainerView>
-      <TransactionCardTitleText>{title}e</TransactionCardTitleText>
-      <TransactionCardAmountTitleText>{amount}</TransactionCardAmountTitleText>
+      <TransactionCardTitleText>{data.title}e</TransactionCardTitleText>
+      <TransactionCardAmountTitleText>{data.amount}</TransactionCardAmountTitleText>
       <TransactionCardFooterView>
         <TransactionCardCategoryView>
           <TransactionCardIcon name="dollar-sign" />
-          <TransactionCardCategoryNameText>{category.name}</TransactionCardCategoryNameText>
+          <TransactionCardCategoryNameText>{data.category.name}</TransactionCardCategoryNameText>
         </TransactionCardCategoryView>
-        <TransactionCardDateText>{date}</TransactionCardDateText>
+        <TransactionCardDateText>{data.date}</TransactionCardDateText>
       </TransactionCardFooterView>
     </TransactionCardContainerView>
   )

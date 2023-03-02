@@ -54,7 +54,14 @@ export const Dashboard: React.FunctionComponent = () => {
       </DashboardHightlightCards>
       <DashboardTransactions>
         <DashboardTransactionsTitle>Listagem</DashboardTransactionsTitle>
-        <TransactionCard />
+        <TransactionCard
+          data={{
+            title: 'Desenvolvimento de site',
+            amount: 'R$ 12.000,00',
+            category: { name: 'Vendas', icon: 'dollar-sign' },
+            date: '13/04/2020'
+          }}
+        />
       </DashboardTransactions>
     </ContainerView>
   )
