@@ -1,5 +1,5 @@
 import React from 'react'
-import { HighlightCard, TransactionCard } from '../../components'
+import { HighlightCard, TransactionCard,  TransactionCardData } from '../../components'
 import {
   ContainerView,
   HeaderView,
@@ -15,23 +15,30 @@ import {
   DashboardTransactionsTitle,
   DashboardTransactionsListFlatList
 } from './styles'
-import { getBottomSpace } from 'react-native-iphone-x-helper'
+
+export interface DataListProps extends TransactionCardData {
+  id: string
+}
 
 export const Dashboard: React.FunctionComponent = () => {
   const data = [
     {
+      id: '1',
+      type: 'positive',
       title: 'Desenvolvimento de site',
       amount: 'R$ 12.000,00',
       category: { name: 'Vendas', icon: 'dollar-sign' },
       date: '13/04/2020'
     },
     {
+      id: '2',
+      type: 'negative',
       title: 'Hamburgueria Pizzy',
-      amount: '- R$ 59,00',
-      category: { name: 'Alimentação', icon: 'dollar-sign' },
+      amount: 'R$ 59,00',
+      category: { name: 'Alimentação', icon: 'coffee' },
       date: '10/04/2020'
     }
-  ]
+  ] as Array<DataListProps>
   return (
     <ContainerView>
       <HeaderView>
@@ -72,11 +79,8 @@ export const Dashboard: React.FunctionComponent = () => {
         <DashboardTransactionsTitle>Listagem</DashboardTransactionsTitle>
         <DashboardTransactionsListFlatList 
           data={data}
+          keyExtractor={(item) => item.id}
           renderItem={({ item }) => <TransactionCard data={item} />}
-          showsVerticalScrollIndicator={false}
-          contentContainerStyle={{
-            paddingBottom: getBottomSpace()
-          }}
         />
       </DashboardTransactions>
     </ContainerView>

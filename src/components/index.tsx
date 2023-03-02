@@ -1,2 +1,2 @@
 export { HighlightCard } from './HighlightCard/HighlightCard'
-export { TransactionCard } from './TransactionCard/TransactionCard'
+export { TransactionCard, TransactionCardData } from './TransactionCard/TransactionCard'

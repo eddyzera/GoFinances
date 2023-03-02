@@ -15,13 +15,15 @@ type CategoryProps = {
   icon: string
 }
 
+export interface TransactionCardData {
+  type: 'positive' | 'negative'
+  title: string
+  amount: string
+  category: CategoryProps
+  date: string
+}
 interface TransactionCardProps {
-  data: {
-    title: string
-    amount: string
-    category: CategoryProps
-    date: string
-  }
+  data: TransactionCardData
 }
 
 export const TransactionCard: React.FunctionComponent<TransactionCardProps> = ({
@@ -30,10 +32,13 @@ export const TransactionCard: React.FunctionComponent<TransactionCardProps> = ({
   return (
     <TransactionCardContainerView>
       <TransactionCardTitleText>{data.title}e</TransactionCardTitleText>
-      <TransactionCardAmountTitleText>{data.amount}</TransactionCardAmountTitleText>
+      <TransactionCardAmountTitleText type={data.type}>
+        { data.type === 'negative' && '- ' }
+        {data.amount}
+      </TransactionCardAmountTitleText>
       <TransactionCardFooterView>
         <TransactionCardCategoryView>
-          <TransactionCardIcon name="dollar-sign" />
+          <TransactionCardIcon name={data.category.icon} />
           <TransactionCardCategoryNameText>{data.category.name}</TransactionCardCategoryNameText>
         </TransactionCardCategoryView>
         <TransactionCardDateText>{data.date}</TransactionCardDateText>
