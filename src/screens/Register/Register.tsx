@@ -9,6 +9,7 @@ import {
 } from './styles'
 import {
   Button,
+  CategorySelect,
   Input,
   TransactionTypeButton
 } from '../../components'
@@ -44,6 +45,7 @@ export const Register: React.FunctionComponent = () => {
               isActive={transactionType === "down"}
             />
           </TransactionTypesView>
+          <CategorySelect title="Categoria" />
         </RegisterFieldsView>
         <Button label="Enviar" />
       </RegisterFormView>

@@ -3,3 +3,4 @@ export { TransactionCard, TransactionCardData } from './TransactionCard/Transact
 export { Input } from './Forms/Input/Inputs'
 export { Button } from './Forms/Button/Button'
 export { TransactionTypeButton } from './Forms/TransactionTypeButton/TransactionTypeButton'
+export { CategorySelect } from './Forms/CategorySelect/CategorySelect'
