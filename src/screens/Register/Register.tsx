@@ -1,14 +1,26 @@
-import React from 'react'
+import React, { useState } from 'react'
 import {
   RegisterContainerView,
   RegisterFieldsView,
   RegisterFormView,
   RegisterHeaderView,
-  RegisterTitleText
+  RegisterTitleText,
+  TransactionTypesView
 } from './styles'
-import { Button, Input } from '../../components'
+import {
+  Button,
+  Input,
+  TransactionTypeButton
+} from '../../components'
 
 export const Register: React.FunctionComponent = () => {
+
+  const [transactionType, setTransactionType] = useState<'up' | 'down'>()
+
+  const handleTransactionTypeSelect = (type: 'up' | 'down') => {
+    setTransactionType(type)
+  }
+
   return (
     <RegisterContainerView>
       <RegisterHeaderView>
@@ -18,6 +30,20 @@ export const Register: React.FunctionComponent = () => {
         <RegisterFieldsView>
           <Input placeholder="Nome" />
           <Input placeholder="Preço" />
+          <TransactionTypesView>
+            <TransactionTypeButton
+              type="up"
+              title="Entrada"
+              onPress={() => handleTransactionTypeSelect('up')}
+              isActive={transactionType === "up"}
+            />
+            <TransactionTypeButton
+              type="down"
+              title="Saida"
+              onPress={() => handleTransactionTypeSelect('down')}
+              isActive={transactionType === "down"}
+            />
+          </TransactionTypesView>
         </RegisterFieldsView>
         <Button label="Enviar" />
       </RegisterFormView>

@@ -28,3 +28,8 @@ export const RegisterFormView = styled.View`
 `
 
 export const RegisterFieldsView = styled.View``
+
+export const TransactionTypesView = styled.View`
+  flex-direction: row;
+  justify-content: space-between;
+`

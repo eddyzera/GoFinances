@@ -11,6 +11,6 @@ export const ButtonContainerTouchableOpacity = styled(TouchableOpacity)`
 `
 export const ButtonLabelText = styled.Text`
   font-family: ${({ theme }) => theme.fonts.medium};
-  background-color: ${RFValue(14)}px;
+  font-size: ${RFValue(14)}px;
   color: ${({ theme }) => theme.colors.shape};
 `
