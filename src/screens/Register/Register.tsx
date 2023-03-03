@@ -1,11 +1,22 @@
 import React from 'react'
-import { Text } from 'react-native'
-import { RegisterContainerView } from './styles'
+import {
+  RegisterContainerView,
+  RegisterFormView,
+  RegisterHeaderView,
+  RegisterTitleText
+} from './styles'
+import { Input } from '../../components'
 
 export const Register: React.FunctionComponent = () => {
   return (
     <RegisterContainerView>
-      <Text>Hello</Text>
+      <RegisterHeaderView>
+        <RegisterTitleText>Cadastro</RegisterTitleText>
+      </RegisterHeaderView>
+      <RegisterFormView>
+        <Input placeholder="Nome" />
+        <Input placeholder="Preço" />
+      </RegisterFormView>
     </RegisterContainerView>
   )
 }
