@@ -22,6 +22,9 @@ export const RegisterTitleText = styled.Text`
 `
 export const RegisterFormView = styled.View`
   flex: 1;
+  justify-content: space-between;
   width: 100%;
   padding: 24px;
 `
+
+export const RegisterFieldsView = styled.View``

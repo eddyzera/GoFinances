@@ -1,11 +1,12 @@
 import React from 'react'
 import {
   RegisterContainerView,
+  RegisterFieldsView,
   RegisterFormView,
   RegisterHeaderView,
   RegisterTitleText
 } from './styles'
-import { Input } from '../../components'
+import { Button, Input } from '../../components'
 
 export const Register: React.FunctionComponent = () => {
   return (
@@ -14,8 +15,11 @@ export const Register: React.FunctionComponent = () => {
         <RegisterTitleText>Cadastro</RegisterTitleText>
       </RegisterHeaderView>
       <RegisterFormView>
-        <Input placeholder="Nome" />
-        <Input placeholder="Preço" />
+        <RegisterFieldsView>
+          <Input placeholder="Nome" />
+          <Input placeholder="Preço" />
+        </RegisterFieldsView>
+        <Button label="Enviar" />
       </RegisterFormView>
     </RegisterContainerView>
   )
