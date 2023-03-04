@@ -8,13 +8,15 @@ import {
 
 interface CategorySelectProps {
   title: string
+  onShowModal: () => void
 }
 
 export const CategorySelect: React.FunctionComponent<CategorySelectProps> = ({
   title,
+  onShowModal
 }) => {
   return (
-    <CategorySelectContainerView>
+    <CategorySelectContainerView onPress={onShowModal}>
       <CategorySelectTitleText>
         { title }
       </CategorySelectTitleText>

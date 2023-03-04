@@ -1,4 +1,6 @@
 import React, { useState } from 'react'
+import { Modal } from 'react-native'
+import { CategoriesSelect } from '..'
 import {
   RegisterContainerView,
   RegisterFieldsView,
@@ -14,9 +16,23 @@ import {
   TransactionTypeButton
 } from '../../components'
 
+type Category = {
+  key: string
+  name: string
+}
+
 export const Register: React.FunctionComponent = () => {
 
   const [transactionType, setTransactionType] = useState<'up' | 'down'>()
+  const [category, setCategory] = useState<Category>({
+    key: '',
+    name: '',
+  })
+  const [isCaregoryModalOpen, setIsCategoryModalOpen] = useState<boolean>(false)
+
+  const handleShowModalSelectCategory = () => {
+    setIsCategoryModalOpen(state => !state)
+  }
 
   const handleTransactionTypeSelect = (type: 'up' | 'down') => {
     setTransactionType(type)
@@ -45,10 +61,20 @@ export const Register: React.FunctionComponent = () => {
               isActive={transactionType === "down"}
             />
           </TransactionTypesView>
-          <CategorySelect title="Categoria" />
+          <CategorySelect
+            title="Categoria"
+            onShowModal={handleShowModalSelectCategory}
+          />
         </RegisterFieldsView>
-        <Button label="Enviar" />
+        <Button label="Enviar"  />
       </RegisterFormView>
+      <Modal visible={isCaregoryModalOpen}>
+        <CategoriesSelect
+          category={category}
+          setCategory={setCategory}
+          closeSelectCategory={handleShowModalSelectCategory}
+        />
+      </Modal>
     </RegisterContainerView>
   )
 }

@@ -3,7 +3,7 @@ import {
   CategoriesSelectContainerView,
   CategoriesSelectHeaderView,
   CategoriesSelectTitleText,
-  CategoryView,
+  CategoryTouchableOpacity,
   CategoryIcon,
   CategoryNameText,
   CategorySeparatorView,
@@ -25,7 +25,16 @@ interface CategoriesSelectProps {
   closeSelectCategory: () => void
 }
 
-export const CategoriesSelect: React.FunctionComponent = () => {
+export const CategoriesSelect: React.FunctionComponent<CategoriesSelectProps> = ({
+  category,
+  setCategory,
+  closeSelectCategory
+}) => {
+
+  const handleSelectCategory = (item: Category) => {
+    setCategory(item)
+  }
+
   return (
     <CategoriesSelectContainerView>
       <CategoriesSelectHeaderView>
@@ -38,15 +47,18 @@ export const CategoriesSelect: React.FunctionComponent = () => {
         style={{ flex: 1, width: '100%', }}
         keyExtractor={(item) => item.key}
         renderItem={({ item }) => (
-          <CategoryView>
+          <CategoryTouchableOpacity
+            onPress={() => handleSelectCategory(item)}
+            isActive={category.key === item.key}
+          >
             <CategoryIcon name={item.icon} />
             <CategoryNameText>{item.name}</CategoryNameText>
-          </CategoryView>
+          </CategoryTouchableOpacity>
         )}
         ItemSeparatorComponent={() => (<CategorySeparatorView/>) }
       />
       <CategoriesSelectFooterView>
-        <CategoriesSelectButtonTouchable>
+        <CategoriesSelectButtonTouchable onPress={closeSelectCategory}>
           <CategoriesSelectButtonText>
             Selecionar
           </CategoriesSelectButtonText>
