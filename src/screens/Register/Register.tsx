@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { Modal } from 'react-native'
+import { useForm } from 'react-hook-form'
 import { CategoriesSelect } from '..'
 import {
   RegisterContainerView,
@@ -12,24 +13,28 @@ import {
 import {
   Button,
   CategorySelect,
-  Input,
+  InputForm,
   TransactionTypeButton
 } from '../../components'
+
 
 type Category = {
   key: string
   name: string
 }
 
-export const Register: React.FunctionComponent = () => {
+interface FormData {
+  name: string,
+  amount: string
+}
 
+export const Register: React.FunctionComponent = () => {
+  const { control, handleSubmit } = useForm()
   const [transactionType, setTransactionType] = useState<'up' | 'down'>()
   const [category, setCategory] = useState<Category>({
     key: '',
     name: '',
   })
-  const [ name, setName ] = useState<string>('')
-  const [ amount, setAmount ] = useState<string>('')
   const [isCaregoryModalOpen, setIsCategoryModalOpen] = useState<boolean>(false)
 
   const handleShowModalSelectCategory = () => {
@@ -40,14 +45,14 @@ export const Register: React.FunctionComponent = () => {
     setTransactionType(type)
   }
 
-  const handleRegister = () => { 
-    const data = {
-      name,
-      amount,
-      transactionType,
-      category: category.key
-    }
-    console.log(name, amount)
+  const handleRegister = (form: FormData) => { 
+    // const data = {
+    //   name,
+    //   amount,
+    //   transactionType,
+    //   category: category.key
+    // }
+    console.log(form)
   }
 
 
@@ -58,8 +63,8 @@ export const Register: React.FunctionComponent = () => {
       </RegisterHeaderView>
       <RegisterFormView>
         <RegisterFieldsView>
-          <Input placeholder="Nome" onChangeText={text => setName(text)} />
-          <Input placeholder="Preço" onChangeText={amount => setAmount(amount)}/>
+          <InputForm name="name" control={control} placeholder="Nome" />
+          <InputForm name="amount" control={control} placeholder="Preço"/>
           <TransactionTypesView>
             <TransactionTypeButton
               type="up"
@@ -79,7 +84,7 @@ export const Register: React.FunctionComponent = () => {
             onShowModal={handleShowModalSelectCategory}
           />
         </RegisterFieldsView>
-        <Button label="Enviar" onPress={handleRegister}  />
+        <Button label="Enviar" onPress={handleSubmit(handleRegister)}  />
       </RegisterFormView>
       <Modal visible={isCaregoryModalOpen}>
         <CategoriesSelect
