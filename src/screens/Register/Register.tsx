@@ -28,6 +28,8 @@ export const Register: React.FunctionComponent = () => {
     key: '',
     name: '',
   })
+  const [ name, setName ] = useState<string>('')
+  const [ amount, setAmount ] = useState<string>('')
   const [isCaregoryModalOpen, setIsCategoryModalOpen] = useState<boolean>(false)
 
   const handleShowModalSelectCategory = () => {
@@ -38,6 +40,17 @@ export const Register: React.FunctionComponent = () => {
     setTransactionType(type)
   }
 
+  const handleRegister = () => { 
+    const data = {
+      name,
+      amount,
+      transactionType,
+      category: category.key
+    }
+    console.log(name, amount)
+  }
+
+
   return (
     <RegisterContainerView>
       <RegisterHeaderView>
@@ -45,8 +58,8 @@ export const Register: React.FunctionComponent = () => {
       </RegisterHeaderView>
       <RegisterFormView>
         <RegisterFieldsView>
-          <Input placeholder="Nome" />
-          <Input placeholder="Preço" />
+          <Input placeholder="Nome" onChangeText={text => setName(text)} />
+          <Input placeholder="Preço" onChangeText={amount => setAmount(amount)}/>
           <TransactionTypesView>
             <TransactionTypeButton
               type="up"
@@ -66,7 +79,7 @@ export const Register: React.FunctionComponent = () => {
             onShowModal={handleShowModalSelectCategory}
           />
         </RegisterFieldsView>
-        <Button label="Enviar"  />
+        <Button label="Enviar" onPress={handleRegister}  />
       </RegisterFormView>
       <Modal visible={isCaregoryModalOpen}>
         <CategoriesSelect

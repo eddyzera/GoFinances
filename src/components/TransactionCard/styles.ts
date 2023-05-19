@@ -14,7 +14,7 @@ export const TransactionCardContainerView = styled.View`
 `
 
 export const TransactionCardTitleText = styled.Text`
-  font-family: ${({ theme }) => theme.fonts.regular}
+  font-family: ${({ theme }) => theme.fonts.regular};
   font-size: ${RFValue(14)}px;
 `
 
@@ -22,7 +22,7 @@ export const TransactionCardAmountTitleText = styled.Text<TransactionTypeProps>`
   font-family: ${({ theme }) => theme.fonts.regular};
   color: ${({ theme, type }) => 
     type === 'positive' ? theme.colors.success : theme.colors.attention
-  }
+  };
   font-size: ${RFValue(20)}px;
   margin-top: 2px;
 `
