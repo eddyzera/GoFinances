@@ -1,6 +1,8 @@
 import React, { useState } from 'react'
 import { Modal, TouchableWithoutFeedback, Keyboard } from 'react-native'
 import { useForm } from 'react-hook-form'
+import * as Yup from 'yup'
+import { yupResolver } from '@hookform/resolvers/yup'
 import { CategoriesSelect } from '..'
 import {
   RegisterContainerView,
@@ -28,8 +30,15 @@ interface FormData {
   amount: string
 }
 
+const schema = Yup.object().shape({
+  name: Yup.string().required('Nome é obrigatorio'),
+  amount: Yup.number().typeError('Informe um valor numerico').positive().required()
+})
+
 export const Register: React.FunctionComponent = () => {
-  const { control, handleSubmit } = useForm()
+  const { control, handleSubmit } = useForm({
+    resolver: yupResolver(schema)
+  })
   const [transactionType, setTransactionType] = useState<'up' | 'down'>()
   const [category, setCategory] = useState<Category>({
     key: '',
@@ -46,12 +55,6 @@ export const Register: React.FunctionComponent = () => {
   }
 
   const handleRegister = (form: FormData) => { 
-    // const data = {
-    //   name,
-    //   amount,
-    //   transactionType,
-    //   category: category.key
-    // }
     console.log(form)
   }
 
