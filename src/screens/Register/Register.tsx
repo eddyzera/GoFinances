@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Modal } from 'react-native'
+import { Modal, TouchableWithoutFeedback, Keyboard } from 'react-native'
 import { useForm } from 'react-hook-form'
 import { CategoriesSelect } from '..'
 import {
@@ -57,42 +57,53 @@ export const Register: React.FunctionComponent = () => {
 
 
   return (
-    <RegisterContainerView>
-      <RegisterHeaderView>
-        <RegisterTitleText>Cadastro</RegisterTitleText>
-      </RegisterHeaderView>
-      <RegisterFormView>
-        <RegisterFieldsView>
-          <InputForm name="name" control={control} placeholder="Nome" />
-          <InputForm name="amount" control={control} placeholder="Preço"/>
-          <TransactionTypesView>
-            <TransactionTypeButton
-              type="up"
-              title="Entrada"
-              onPress={() => handleTransactionTypeSelect('up')}
-              isActive={transactionType === "up"}
+    <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+      <RegisterContainerView>
+        <RegisterHeaderView>
+          <RegisterTitleText>Cadastro</RegisterTitleText>
+        </RegisterHeaderView>
+        <RegisterFormView>
+          <RegisterFieldsView>
+            <InputForm name="name"
+              control={control}
+              placeholder="Nome"
+              autoCapitalize="sentences"
+              autoCorrect={false}
             />
-            <TransactionTypeButton
-              type="down"
-              title="Saida"
-              onPress={() => handleTransactionTypeSelect('down')}
-              isActive={transactionType === "down"}
+            <InputForm name="amount"
+              control={control}
+              placeholder="Preço"
+              keyboardType="numeric"
             />
-          </TransactionTypesView>
-          <CategorySelect
-            title="Categoria"
-            onShowModal={handleShowModalSelectCategory}
+            <TransactionTypesView>
+              <TransactionTypeButton
+                type="up"
+                title="Entrada"
+                onPress={() => handleTransactionTypeSelect('up')}
+                isActive={transactionType === "up"}
+              />
+              <TransactionTypeButton
+                type="down"
+                title="Saida"
+                onPress={() => handleTransactionTypeSelect('down')}
+                isActive={transactionType === "down"}
+              />
+            </TransactionTypesView>
+            <CategorySelect
+              title="Categoria"
+              onShowModal={handleShowModalSelectCategory}
+            />
+          </RegisterFieldsView>
+          <Button label="Enviar" onPress={handleSubmit(handleRegister)}  />
+        </RegisterFormView>
+        <Modal visible={isCaregoryModalOpen}>
+          <CategoriesSelect
+            category={category}
+            setCategory={setCategory}
+            closeSelectCategory={handleShowModalSelectCategory}
           />
-        </RegisterFieldsView>
-        <Button label="Enviar" onPress={handleSubmit(handleRegister)}  />
-      </RegisterFormView>
-      <Modal visible={isCaregoryModalOpen}>
-        <CategoriesSelect
-          category={category}
-          setCategory={setCategory}
-          closeSelectCategory={handleShowModalSelectCategory}
-        />
-      </Modal>
-    </RegisterContainerView>
+        </Modal>
+      </RegisterContainerView>
+    </TouchableWithoutFeedback>
   )
 }
