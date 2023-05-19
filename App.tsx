@@ -7,8 +7,9 @@ import {
 } from '@expo-google-fonts/poppins'
 import * as SplashScreen from 'expo-splash-screen'
 import { ThemeProvider } from 'styled-components'
-import { Dashboard, Register } from './src/screens'
 import { customTheme } from './src/global'
+import { NavigationContainer } from '@react-navigation/native'
+import { AppRouter } from './src/routes/app.routes'
 
 export default function App() {
 
@@ -38,7 +39,9 @@ export default function App() {
   if (!isLoaded) return null;
   return (
     <ThemeProvider theme={customTheme}>
-       <Register />
+      <NavigationContainer>
+        <AppRouter />
+      </NavigationContainer>
     </ThemeProvider>
   )
 }
