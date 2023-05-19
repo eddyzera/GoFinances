@@ -1,5 +1,6 @@
 import styled from 'styled-components/native'
 import { FlatList, FlatListProps } from 'react-native'
+import { BorderlessButton } from 'react-native-gesture-handler'
 import { Feather } from '@expo/vector-icons'
 import { getBottomSpace, getStatusBarHeight } from 'react-native-iphone-x-helper'
 import { RFPercentage, RFValue } from 'react-native-responsive-fontsize'
@@ -11,7 +12,7 @@ export const ContainerView = styled.View`
 `
 export const HeaderView = styled.View`
   width: 100%;
-  height: ${RFPercentage(42)}px
+  height: ${RFPercentage(42)}px;
   background-color: ${({ theme }) => theme.colors.primary};
   justify-content: center;
   align-items: flex-start;
@@ -86,6 +87,6 @@ export const DashboardTransactionsListFlatList = styled(
   contentContainerStyle: {
     paddingBottom: getBottomSpace()
   }
-})`
+})``
 
-`
+export const LogoutButton = styled(BorderlessButton)``

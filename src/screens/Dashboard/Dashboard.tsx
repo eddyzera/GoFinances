@@ -13,7 +13,8 @@ import {
   DashboardHightlightCards,
   DashboardTransactions,
   DashboardTransactionsTitle,
-  DashboardTransactionsListFlatList
+  DashboardTransactionsListFlatList,
+  LogoutButton
 } from './styles'
 
 export interface DataListProps extends TransactionCardData {
@@ -52,7 +53,9 @@ export const Dashboard: React.FunctionComponent = () => {
                 <UserName>Edgar Silva</UserName>
               </User>
             </UserInfo>
-            <Icon name="power" />
+            <LogoutButton onPress={() => {}}>
+              <Icon name="power" />
+            </LogoutButton>
           </UserWrapper>
       </HeaderView>
       <DashboardHightlightCards>
