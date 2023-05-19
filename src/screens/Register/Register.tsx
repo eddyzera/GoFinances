@@ -36,7 +36,7 @@ const schema = Yup.object().shape({
 })
 
 export const Register: React.FunctionComponent = () => {
-  const { control, handleSubmit } = useForm({
+  const { control, handleSubmit, formState: { errors } } = useForm<FormData>({
     resolver: yupResolver(schema)
   })
   const [transactionType, setTransactionType] = useState<'up' | 'down'>()
@@ -67,16 +67,19 @@ export const Register: React.FunctionComponent = () => {
         </RegisterHeaderView>
         <RegisterFormView>
           <RegisterFieldsView>
-            <InputForm name="name"
+            <InputForm 
+              name="name"
               control={control}
               placeholder="Nome"
               autoCapitalize="sentences"
               autoCorrect={false}
+              error={errors.name && errors.name.message}
             />
             <InputForm name="amount"
               control={control}
               placeholder="Preço"
               keyboardType="numeric"
+              error={errors.amount && errors.amount.message}
             />
             <TransactionTypesView>
               <TransactionTypeButton

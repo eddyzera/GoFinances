@@ -1,15 +1,16 @@
 import React from 'react'
-import { Input } from '../Input/Inputs'
-import { ContainerView } from './styles'
 import { TextInputProps } from 'react-native'
 import { Control, Controller } from 'react-hook-form'
+import { Input } from '../Input/Inputs'
+import { ContainerView, ErrorText } from './styles'
 
 interface Props extends TextInputProps {
-  control: Control
+  control: Control<any>
   name: string
+  error: string
 }
 
-export const InputForm: React.FunctionComponent<Props> = ({ control, name, ...props }) => {
+export const InputForm: React.FunctionComponent<Props> = ({ control, name, error, ...props }) => {
   return (
     <ContainerView>
       <Controller
@@ -23,6 +24,7 @@ export const InputForm: React.FunctionComponent<Props> = ({ control, name, ...pr
           />
         )}
       />
+      {error && <ErrorText>{error}</ErrorText>}
     </ContainerView>
   )
 }
